@@ -1,31 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Counter</title>
+<title>Счетчик</title>
 <script>
-// Инициализируем переменную total
-let total = 0;
+var total1 = 0;
+var total2 = 0;
+var total3 = 0;
+var total4 = 0;
+var total5 = 0;
 
-// Функция для добавления числа к total и обновления текстового поля
-function addToTotal(number) {
-  total += number;
-  document.getElementById('totalValue').value = total;
+var price1 = 1; // Цена для переменной total1
+var price2 = 20; // Цена для переменной total2
+var price3 = 300; // Цена для переменной total3
+var price4 = 4000; // Цена для переменной total4
+var price5 = 50000; // Цена для переменной total5
+
+// Функция для изменения значения заданной переменной
+function changeTotal(variable, operation) {
+  if (operation === 'add') {
+    window[variable]++;
+  } else if (operation === 'subtract' && window[variable] > 0) {
+    window[variable]--;
+  }
+  updateTotal(variable);
+  updateTotalSum();
+}
+
+// Функция для обновления отображения значения переменной
+function updateTotal(variable) {
+  document.getElementById(variable).value = window[variable];
+}
+
+// Функция для обновления общей суммы
+function updateTotalSum() {
+  var totalSum = (total1 * price1) + (total2 * price2) + (total3 * price3) + 
+                 (total4 * price4) + (total5 * price5);
+  document.getElementById('totalSum').innerText = 'Общая сумма: ' + totalSum;
+}
+
+// Функция для сброса всех переменных
+function resetTotals() {
+  total1 = total2 = total3 = total4 = total5 = 0;
+  updateTotal('total1');
+  updateTotal('total2');
+  updateTotal('total3');
+  updateTotal('total4');
+  updateTotal('total5');
+  updateTotalSum();
 }
 </script>
 </head>
 <body>
 
-<!-- Текстовое поле для отображения значения переменной total -->
-<input type="text" id="totalValue" value="0" readonly>
+<h1 id="totalSum">Общая сумма: 0</h1>
 
-<!-- Кнопки для добавления значений к total -->
-<button onclick="addToTotal(1)">Добавить 1</button>
-<button onclick="addToTotal(2)">Добавить 2</button>
-<button onclick="addToTotal(3)">Добавить 3</button>
-<button onclick="addToTotal(4)">Добавить 4</button>
-<button onclick="addToTotal(5)">Добавить 5</button>
+<div>
+  <label for="total1">Счетчик 1 (цена: 1):</label>
+  <input type="text" id="total1" value="0" readonly>
+  <button onclick="changeTotal('total1', 'add')">Увеличить</button>
+  <button onclick="changeTotal('total1', 'subtract')">Уменьшить</button>
+</div>
+
+<div>
+  <label for="total2">Счетчик 2 (цена: 2):</label>
+  <input type="text" id="total2" value="0" readonly>
+  <button onclick="changeTotal('total2', 'add')">Увеличить</button>
+  <button onclick="changeTotal('total2', 'subtract')">Уменьшить</button>
+</div>
+
+<div>
+  <label for="total3">Счетчик 3 (цена: 3):</label>
+  <input type="text" id="total3" value="0" readonly>
+  <button onclick="changeTotal('total3', 'add')">Увеличить</button>
+  <button onclick="changeTotal('total3', 'subtract')">Уменьшить</button>
+</div>
+
+<div>
+  <label for="total4">Счетчик 4 (цена: 4):</label>
+  <input type="text" id="total4" value="0" readonly>
+  <button onclick="changeTotal('total4', 'add')">Увеличить</button>
+  <button onclick="changeTotal('total4', 'subtract')">Уменьшить</button>
+</div>
+
+<div>
+  <label for="total5">Счетчик 5 (цена: 5):</label>
+  <input type="text" id="total5" value="0" readonly>
+  <button onclick="changeTotal('total5', 'add')">Увеличить</button>
+  <button onclick="changeTotal('total5', 'subtract')">Уменьшить</button>
+</div>
+
+<button onclick="resetTotals()">Сброс всех</button>
 
 </body>
 </html>
