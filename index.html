@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Counter</title>
+<script>
+// Инициализируем переменную total
+let total = 0;
+
+// Функция для добавления числа к total и обновления текстового поля
+function addToTotal(number) {
+  total += number;
+  document.getElementById('totalValue').value = total;
+}
+</script>
+</head>
+<body>
+
+<!-- Текстовое поле для отображения значения переменной total -->
+<input type="text" id="totalValue" value="0" readonly>
+
+<!-- Кнопки для добавления значений к total -->
+<button onclick="addToTotal(1)">Добавить 1</button>
+<button onclick="addToTotal(2)">Добавить 2</button>
+<button onclick="addToTotal(3)">Добавить 3</button>
+<button onclick="addToTotal(4)">Добавить 4</button>
+<button onclick="addToTotal(5)">Добавить 5</button>
+
+</body>
+</html>
